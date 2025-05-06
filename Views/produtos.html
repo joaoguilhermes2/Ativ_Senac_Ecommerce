@@ -5,6 +5,10 @@
   <title>Produtos - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../Assets/Css/listar_produtos.css">
+  
+  <!-- <script src="js/menu.js" defer></script> -->
 </head>
 <body>
 
@@ -25,8 +29,45 @@
     <h1>Produtos</h1>
     <p>Aqui estão os nossos produtos!</p>
     <!-- Produtos listados aqui -->
+
+    <div class="barra_pesquisa">
+      <input id="barra_pesquisar" type="text">
+      <button id="btn_pesquisar">Buscar</button>
+    </div>
+
+    <section id="area_cards">
+    </section>
   </main>
 
-  <script src="js/menu.js"></script>
+  <script defer>
+    const area_cards = document.getElementById("area_cards");
+
+
+    
+    fetch('https://fakestoreapi.com/products')
+    .then(
+      // response => response.json()
+      function(resposta){
+        return resposta.json();
+      }
+    )
+    .then(
+      function(dados_json){
+        dados_json.forEach(item => {
+          // console.log(item.rating);
+          document.getElementById("area_cards").innerHTML += `
+            <a href="" class="card_prod">
+              <img src="${item.image}" alt="" id="img_prod">
+              <div class="info_prod">
+                <h3 id="nome_prod">${item.title}</h3>
+                <span id="val_prod">R$ ${item.price}</span>
+                <span id="avaliacao_prod">${item.rating.rate} ⭐<br> ${item.rating.count} Avaliações</span>
+              </div>
+            </a>
+          `;
+        });
+      }
+    );
+  </script>
 </body>
 </html>

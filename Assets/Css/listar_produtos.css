@@ -1,0 +1,49 @@
+@import url("./style.css");
+
+#area_cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card_prod{
+    width: 300px;
+    height: calc(450px);
+    /* max-height: 700px; */
+    display: flex;
+    flex-direction: column;
+    
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    
+    background-color: white;
+    color: #003366;
+    text-decoration: none;
+    text-decoration-style: none;
+    
+    object-fit: cover;
+    overflow: hidden;
+}
+
+#img_prod{
+    display: flex;   
+    flex-wrap: wrap;
+}
+
+.info_prod, #img_prod{
+    height: 50%;
+}
+
+.info_prod{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
