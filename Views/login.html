@@ -6,7 +6,7 @@
     <title>Tela de Login</title>
     <link rel="stylesheet" href="../Assets/Css/login.css">
 </head>
-<body>
+<body>   
     <div class="container">
         <div class="logo-box">
           <img src="../Assets/IMG/logo_senac.png" alt="Logo Senac" class="logo">
@@ -21,6 +21,7 @@
         <p>Não possui conta? <a href="#" class="cadastro-link">Cadastre-se</a></p>
     </form>
     <script>
+        console.log("Script carregado");
         const form = document.getElementById('loginForm')
         const errorMsg = document.getElementById('errorMsg')
 
@@ -29,6 +30,9 @@
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            console.log("Login bem-sucedido:");
+            console.log('Username:', sessionStorage.getItem('username'));
+            console.log('Token:', sessionStorage.getItem('token'));
 
             try{
                 const response = await fetch('http://localhost:3000/login', {
@@ -51,7 +55,7 @@
 
                 if (resUser.ok) {
                     sessionStorage.setItem('userId', userData.id);
-                    window.location.href = 'home.html';
+                    /* window.location.href = 'home.html'; */
                 } else {
                     throw new Error('Erro ao buscar ID do usuário.');
                 }
@@ -66,5 +70,18 @@
             }
         });
     </script>
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+            <path fill="#FF8C00" fill-opacity="1">
+                <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                    values="
+                        M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                        M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                        M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                        M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                    " />
+            </path>
+        </svg>
+    </div> 
 </body>
 </html>
