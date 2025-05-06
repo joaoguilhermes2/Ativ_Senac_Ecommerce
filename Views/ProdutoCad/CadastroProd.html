@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro Usuário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../Assets/Css/index.css">
+  <link rel="stylesheet" href="../../Assets/Css/style.css">
+</head>
+<body>
+    <form class="area-cad" action="" method="post">
+      <div class="group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome.">
+      </div>
+      <div class="group">
+        <label for="preco">Preço</label>
+        <input type="text" name="preco" id="preco" placeholder="Digite preço do produto.">
+      </div>
+      <div class="group">
+        <label for="descricaoProd">Descrição</label>
+        <input type="descricaoProd" name="descricaoProd" id="descricaoProd" placeholder="Descrição do produto.">
+      </div>
+      <div class="group">
+        <label for="foto" class="form-label">Foto</label>
+        <input type="file" class="form-control" id="foto" name="foto">
+        
+      </div>
+      <button type="submit" id="btn_cadastrar" class="botao-cadastro">Cadastrar</button>
+
+      <button type="button" class="botao-voltar" onclick="window.location.href='../login.html';">Voltar</button>
+    </form>
+  </div>
+  <script>
+    document.querySelector('.area-cad').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const nome = document.getElementById('nome').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const confSenha = document.getElementById('confSenha').value;
+  
+      if (!nome || !tel || !email || !senha || !confSenha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      if (senha !== confSenha) {
+        alert('As senhas não coincidem.');
+        return;
+      }
+  
+      alert('Cadastrado com sucesso!');
+      
+    });
+  </script>  
+</body>
+</html>

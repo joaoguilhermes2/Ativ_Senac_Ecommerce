@@ -1,0 +1,37 @@
+.group input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    
+}
+.area-cad input:focus {
+    border-color: #005baa;
+  }
+  
+  .area-cad .botao-cadastro {
+    width: 100%;
+    padding: 10px;
+    background: #005baa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .area-cad .botao-cadastro:hover {
+    background: #003f7f;
+  }
+  .botao-voltar{
+    width: 100%;
+    padding: 10px;
+    background-color: #F7931E;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+  }
