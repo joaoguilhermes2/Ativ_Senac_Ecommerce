@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #005baa, #00b4d8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .cadastro-link {
+    color: #FF8C00;
+  }
+  
+  .container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+  }
+  
+  .logo-box {
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+  } 
+  
+  .logo {
+    width: 150px;
+    display: block;
+    animation: fadeInLogo 1s ease-in-out;
+  }
+  
+  .subtitle {
+    position: absolute;
+    bottom: -1px; /* Ajuste fino da posição vertical */
+    left: 20%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #005baa;
+    animation: slideIn 1s ease-out forwards;
+  }
+  
+  @keyframes fadeInLogo {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .login-form input:focus {
+    border-color: #005baa;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background: #005baa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .login-form button:hover {
+    background: #003f7f;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  .register-link {
+    display: block;
+    margin-top: 10px;
+    color: #005baa;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }  
