@@ -55,7 +55,30 @@
     border: none;
     cursor: pointer;
   }
-  
+  ul{
+    list-style-type: none;
+  }
+  ul ul{
+    display: none;
+    position: absolute;
+    width: 25%;
+    background-color: #003366;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 0;
+}
+ul ul li{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+}
+ul li:hover ul{
+    display: block;
+}
+
   /* Estilos responsivos */
   @media (max-width: 768px) {
     .menu-toggle {
