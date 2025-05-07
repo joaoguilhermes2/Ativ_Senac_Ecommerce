@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Produtos - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css">
+  <link rel="stylesheet" href="../Assets/Css/produtos.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -21,12 +22,54 @@
     </nav>
   </header>
 
-  <main>
+  <main id="produtos-container">
     <h1>Produtos</h1>
     <p>Aqui estão os nossos produtos!</p>
     <!-- Produtos listados aqui -->
-  </main>
+    <div class="busca-container">
+      <input type="text" id="campoBusca" placeholder="Buscar produto...">
+    </div>
 
+    <div id="produtos-container" class="grid-produtos"></div>
+  </main>
+    
+  <script>
+    const container = document.getElementById('produtos-container');
+  
+    // Busca os produtos da API
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(produtos => {
+        produtos.forEach(produto => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${produto.image}" alt="${produto.title}" width="100">
+            <h3>${produto.title}</h3>
+            <p>R$ ${produto.price.toFixed(2)}</p>
+            <button onclick='adicionarAoCarrinho(${JSON.stringify(produto)})'>Adicionar ao carrinho</button>
+          `;
+          container.appendChild(card);
+        });
+      });
+  
+    function adicionarAoCarrinho(produto) {
+      let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  
+      // Verifica se já existe no carrinho
+      const existente = carrinho.find(p => p.id === produto.id);
+      if (existente) {
+        existente.quantidade += 1;
+      } else {
+        carrinho.push({ id: produto.id, nome: produto.title, preco: produto.price, quantidade: 1 });
+      }
+  
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      alert('Produto adicionado ao carrinho!');
+    }
+  </script>
+  
+  <script src="../Assets/js/produtos.js"></script>
   <script src="js/menu.js"></script>
 </body>
 </html>
