@@ -1,49 +1,100 @@
 @import url("./style.css");
 
+.area_produtos{
+    /* border: 1px solid red; */
+    padding: 30px 10% 0 10%;
+}
+
+.area_pesquisa{
+    height: 30px;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    /* padding: 5px; */
+    /* border: 1px solid red; */
+}
+
+#barra_pesquisar, #btn_pesquisar{
+    border: none;
+}
+
+#barra_pesquisar{
+    float: left;
+    border-radius: 5px 0 0 5px;
+    width: 80%;
+    padding: 2px 10px 2px 10px;
+}
+
+#barra_pesquisar:focus{
+    outline: none;
+}
+
+#btn_pesquisar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    width: 20%;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
 #area_cards{
+    /* padding: 10px; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 30px;
     align-items: center;
-    justify-content: center;
-
+    justify-content: space-between;
 }
 
 .card_prod{
-    width: 300px;
-    height: calc(450px);
+    width: 250px;
+    height: calc(400px);
     /* max-height: 700px; */
     display: flex;
     flex-direction: column;
     
     padding: 20px;
-    margin: 10px;
+    /* margin: 5px; */
     border-radius: 5px;
     align-items: center;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 10px;
     
     background-color: white;
     color: #003366;
     text-decoration: none;
     text-decoration-style: none;
-    
-    object-fit: cover;
+
     overflow: hidden;
 }
 
 #img_prod{
     display: flex;   
     flex-wrap: wrap;
-}
-
-.info_prod, #img_prod{
-    height: 50%;
+    height: 40%;
 }
 
 .info_prod{
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+#nome_prod{
+    font-size: 1.05rem;
+    max-height: 5em;
+    white-space: wrap; 
+    overflow: hidden;
+}
+
+#val_prod{
+    font-size: 1.01em;
+    font-weight: bold;
+
 }

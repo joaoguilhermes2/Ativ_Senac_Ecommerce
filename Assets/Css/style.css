@@ -17,13 +17,13 @@
   header {
     background-color: #003366;
     color: #FFFFFF;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     text-align: center;
   }
   
   /* Navegação */
   nav {
-    background-color: #F7931E;
+    /* background-color: #F7931E; */
     padding: 10px 0;
     text-align: center;
   }

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Produtos - Senac Commerce</title>
-  <link rel="stylesheet" href="../Assets/Css/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
+  <link rel="stylesheet" href="../Assets/Css/index.css">
   <link rel="stylesheet" href="../Assets/Css/listar_produtos.css">
   
   <!-- <script src="js/menu.js" defer></script> -->
@@ -15,6 +15,12 @@
   <header>
     <div class="logo">Senac<span>Ecommerce</span></div>
     <button class="menu-toggle" id="menuToggle">&#9776;</button>
+
+    <div class="area_pesquisa">
+      <input id="barra_pesquisar" type="text">
+      <button id="btn_pesquisar" type="submit">Buscar</button>
+    </div>
+    
     <nav class="nav-menu" id="navMenu">
       <a href="../index.html">Home</a>
       <a href="produtos.html">Produtos</a>
@@ -28,33 +34,31 @@
   <main>
     <h1>Produtos</h1>
     <p>Aqui estão os nossos produtos!</p>
-    <!-- Produtos listados aqui -->
 
-    <div class="barra_pesquisa">
-      <input id="barra_pesquisar" type="text">
-      <button id="btn_pesquisar">Buscar</button>
-    </div>
-
-    <section id="area_cards">
+    <section class="area_produtos">
+      
+      <section class="" id="area_cards">
+        <!-- produtos listados -->
+      </section>
     </section>
   </main>
 
   <script defer>
     const area_cards = document.getElementById("area_cards");
+    const btn_pesquisar = document.getElementById("btn_pesquisar");
+    let pesquisa = '';
+  
 
-
-    
     fetch('https://fakestoreapi.com/products')
     .then(
-      // response => response.json()
-      function(resposta){
+      dados_json = function(resposta){
         return resposta.json();
       }
     )
+    // LISTAR PRODUTOS
     .then(
-      function(dados_json){
+      listar_produtos = function(dados_json){
         dados_json.forEach(item => {
-          // console.log(item.rating);
           document.getElementById("area_cards").innerHTML += `
             <a href="" class="card_prod">
               <img src="${item.image}" alt="" id="img_prod">
@@ -67,7 +71,21 @@
           `;
         });
       }
-    );
+    )
+
+    // PESQUISAR PRODUTO
+    document.getElementById('btn_pesquisar').addEventListener('click', (event) =>{ 
+      // event.preventDefault();
+      
+      pesquisa = document.getElementById("barra_pesquisar").value;
+
+      // return pesquisa;
+
+      if (pesquisa != '' && pesquisa != null){
+        // console.log(dados_json.filter(item => item.title.toLowerCase().includes(pesquisa.toLowerCase())));
+        listar_produtos(pesquisa);
+      }
+    })
   </script>
 </body>
 </html>
