@@ -11,15 +11,21 @@
 </head>
 <body>
   <header>
-    <div class="logo">Senac<span>Commerce</span></div>
+    <div class="logo">Senac<span>Ecommerce</span></div>
     <button class="menu-toggle" id="menuToggle">&#9776;</button>
     <nav class="nav-menu" id="navMenu">
-      <a href="../index.html">Home</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="carrinho.html">Carrinho</a>
-      <a href="usuario.html">Usuário</a>
-      <a href="favoritos.html">Favoritos</a>
-      <a href="login.html">Login</a>
+      <a href="../../index.html">Home</a>
+      <ul>
+        <li><a href="../../../Views/produtos.html">Produtos</a>
+          <ul>
+            <li><a href="../../../Views/ProdutoCad/CadastroProd.html">Cadastrar Produto</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="../../../Views/carrinho.html">Carrinho</a>
+      <a href="../../../Views/usuario.html">Usuário</a>
+      <a href="../../../Views/favoritos.html">Favoritos</a>
+      <a href="../../../Views/login.html">Login</a>
     </nav>
   </header>
     <form class="area-cad" action="" method="post">
@@ -27,7 +33,7 @@
         <label class ="espaco"for="nome">Nome</label>
         <input type="text" name="nome" id="nome" placeholder="Digite seu nome.">
       </div>
-      <div class="group">
+      <div class="group">http://127.0.0.1:5501/Views/ProdutoCad/index.html
         <label for="preco">Preço</label>
         <input type="text" name="preco" id="preco" placeholder="Digite preço do produto.">
       </div>
@@ -42,10 +48,23 @@
       </div>
       <button type="submit" id="btn_cadastrar" class="botao-cadastro">Cadastrar</button>
 
-      <button type="button" class="botao-voltar" onclick="window.location.href='../login.html';">Voltar</button>
+      <button type="button" class="botao-voltar" onclick="window.location.href='../../index.html';">Voltar</button>
     </form>
   </div>
-  
+  <div class="wave-container">
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+        <path fill="#FF8C00" fill-opacity="1">
+            <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                values="
+                    M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                    M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                    M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                    M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                " />
+        </path>
+    </svg>
+  </div> 
+
   <script>
     document.querySelector('.area-cad').addEventListener('submit', function(event) {
       event.preventDefault();
