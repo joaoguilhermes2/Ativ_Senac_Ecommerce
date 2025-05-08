@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finalizar Compra - Senac Commerce</title>
+  <link rel="stylesheet" href="../Assets/Css/index.css" />
+  <link rel="stylesheet" href="../Assets/Css/carrinho.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">Senac<span>Ecommerce</span></div>
+    <button id="menuToggle" class="menu-toggle">&#9776;</button>
+    <nav id="navMenu" class="nav-menu">
+      <a href="../index.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="carrinho.html">Carrinho</a>
+      <a href="usuario.html">Usuário</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="carrinho-container">
+    <h1>Finalizar Compra</h1>
+
+    <section id="formulario-entrega" class="form-endereco">
+      <h3>Endereço de Entrega</h3>
+
+      <div class="form-group">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" placeholder="00000-000" onblur="buscarCEP()" required>
+      </div>
+
+      <div class="form-group">
+        <label for="logradouro">Logradouro:</label>
+        <input type="text" id="logradouro" required>
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" required>
+      </div>
+
+      <div class="form-group">
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento">
+      </div>
+
+      <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" required>
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" required>
+          <option value="">Selecione</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="SP">São Paulo</option>
+          <!-- etc -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+      </div>
+    </section>
+
+    <section id="resumo-carrinho" class="resumo-pedido">
+      <h3>Resumo do Pedido</h3>
+      <div id="resumo-detalhes"></div>
+      <div id="frete-info"></div>
+      <div id="total-geral" class="total-geral"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secundario" onclick="voltarParaCarrinho()">Voltar</button>
+        <button type="button" class="btn-primario" onclick="finalizarCompra()">Confirmar Compra</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    let subtotal = 0;
+    let frete = 0;
+
+    function carregarResumo() {
+      const resumo = document.getElementById('resumo-detalhes');
+      resumo.innerHTML = "";
+
+      if (carrinho.length === 0) {
+        resumo.innerHTML = "<p>Carrinho vazio.</p>";
+        return;
+      }
+
+      carrinho.forEach(produto => {
+        const preco = produto.preco || 0;
+        subtotal += preco * produto.quantidade;
+        resumo.innerHTML += `
+          <div class="item">
+            <span>${produto.nome}</span>
+            <span>Qtd: ${produto.quantidade}</span>
+            <span>R$ ${(preco * produto.quantidade).toFixed(2)}</span>
+          </div>
+        `;
+      });
+
+      atualizarTotal();
+    }
+
+    function atualizarTotal() {
+      const total = subtotal + frete;
+      document.getElementById('total-geral').innerHTML = `
+        <p>Subtotal: R$ ${subtotal.toFixed(2)}</p>
+        <p>Frete: R$ ${frete.toFixed(2)}</p>
+        <hr>
+        <p><strong>Total: R$ ${total.toFixed(2)}</strong></p>
+      `;
+    }
+
+    function buscarCEP() {
+      const cep = document.getElementById('cep').value.replace(/\D/g, '');
+
+      if (cep.length !== 8) {
+        alert("CEP inválido");
+        return;
+      }
+
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.erro) {
+            alert("CEP não encontrado");
+            return;
+          }
+          document.getElementById('logradouro').value = data.logradouro;
+          document.getElementById('bairro').value = data.bairro;
+          document.getElementById('cidade').value = data.localidade;
+          document.getElementById('estado').value = data.uf;
+
+          simularFrete(data.uf, cep);
+        });
+    }
+
+    function simularFrete(estado, cep) {
+      // Simulação fictícia de frete por UF
+      const tabelaFrete = {
+        "MS": 15.00,
+        "SP": 20.00,
+        "RJ": 25.00,
+        "AM": 50.00,
+        "DEFAULT": 30.00
+      };
+
+      frete = tabelaFrete[estado] || tabelaFrete["DEFAULT"];
+
+      document.getElementById("frete-info").innerHTML = `<p>Frete para ${cep}: R$ ${frete.toFixed(2)}</p>`;
+      atualizarTotal();
+    }
+
+    function voltarParaCarrinho() {
+      window.location.href = "carrinho.html";
+    }
+
+    function finalizarCompra() {
+      alert("Compra finalizada com sucesso!");
+      localStorage.removeItem("carrinho");
+      window.location.href = "../index.html";
+    }
+
+    carregarResumo();
+  </script>
+
+  <script src="../Assets/js/menu.js"></script>
+
+</body>
+</html>

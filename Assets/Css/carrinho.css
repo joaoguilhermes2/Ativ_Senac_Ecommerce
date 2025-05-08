@@ -64,6 +64,15 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeInForm 0.8s ease-in-out
   }
   
   .item-carrinho {
@@ -179,13 +188,15 @@
   
   /* Resumo do Pedido - Design Aprimorado */
   .resumo-pedido {
-    background: var(--white);
-    padding: 1.75rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--medium-gray);
-    position: sticky;
-    top: 1.5rem;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 100%;
+    /* margin: 2rem auto; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeInForm 0.8s ease-in-out
   }
   
   .resumo-pedido h3 {
@@ -269,6 +280,90 @@
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
   }
+
+  #formulario-entrega {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeInForm 0.8s ease-in-out;
+  }
+  
+  #formulario-entrega h2 {
+    color: #005baa;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  #formulario-entrega form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  #formulario-entrega input,
+  #formulario-entrega select,
+  #formulario-entrega textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  #formulario-entrega input:focus,
+  #formulario-entrega select:focus,
+  #formulario-entrega textarea:focus {
+    border-color: #005baa;
+  }
+  .form-actions{
+    padding-top: 10%;
+  }
+  #formulario-entrega button {
+    padding: 12px;
+    background-color: #005baa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    
+  }
+  
+  #formulario-entrega button:hover {
+    background-color: #003f7f;
+  }
+  
+  #formulario-entrega .mensagem-sucesso {
+    color: #48bb78;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  #formulario-entrega .mensagem-erro {
+    color: #f56565;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  @keyframes fadeInForm {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   
   /* Opções de Frete Aprimoradas */
   .opcoes-frete {
@@ -497,3 +592,139 @@
     40% { content: ".."; }
     60%, 100% { content: "..."; }
   }
+
+  /* Adicione ao seu CSS existente */
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-gray);
+}
+
+.close-modal:hover {
+  color: var(--error-color);
+}
+
+/* Formulário no modal */
+.input-with-button {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-with-button input {
+  flex: 1;
+}
+
+.input-with-button button {
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Métodos de pagamento */
+.metodos-pagamento {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.metodo-pagamento {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.metodo-pagamento:hover {
+  border-color: var(--accent-color);
+}
+
+.metodo-pagamento.active {
+  border-color: var(--secondary-color);
+  background-color: rgba(237, 137, 54, 0.05);
+}
+
+.metodo-pagamento i {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Loading */
+.carregando {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.carregando::after {
+  content: "...";
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+/* Resumo no modal */
+#resumo-compra-modal .resumo-linha {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+#resumo-compra-modal .resumo-total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
