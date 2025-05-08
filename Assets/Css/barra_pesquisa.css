@@ -1,3 +1,9 @@
+@import url("../Css/style.css");
+
+#navMenu{
+    gap: 5px !important;
+}
+
 .area_pesquisa{
     height: 30px;
     width: 25%;
