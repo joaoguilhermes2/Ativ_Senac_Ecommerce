@@ -60,11 +60,11 @@
       listar_produtos = function(dados_json){
         dados_json.forEach(item => {
           document.getElementById("area_cards").innerHTML += `
-            <a href="" class="card_prod">
+            <a href="./produto_item.html?id_prod=${item.id} " class="card_prod">
               <img src="${item.image}" alt="" id="img_prod">
               <div class="info_prod">
                 <h3 id="nome_prod">${item.title}</h3>
-                <span id="val_prod">R$ ${item.price}</span>
+                <p id="val_prod">R$ ${item.price}</p>
                 <span id="avaliacao_prod">${item.rating.rate} ⭐<br> ${item.rating.count} Avaliações</span>
               </div>
             </a>

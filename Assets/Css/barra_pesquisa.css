@@ -1,0 +1,35 @@
+.area_pesquisa{
+    height: 30px;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 0 30px;
+}
+
+#barra_pesquisar, #btn_pesquisar{
+    border: none;
+}
+
+#barra_pesquisar{
+    float: left;
+    border-radius: 5px 0 0 5px;
+    width: 85em;
+    padding: 2px 10px 2px 10px;
+}
+
+#barra_pesquisar:focus{
+    outline: none;
+}
+
+#btn_pesquisar{
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    font-size: 0.8em;
+    font-weight: bold;
+}

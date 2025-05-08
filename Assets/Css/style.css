@@ -7,10 +7,10 @@
   
   /* Tipografia */
   body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* font-family: 'Helvetica Neue', Arial, sans-serif; */
     background-color: #F2F2F2;
     color: #003366;
-    line-height: 1.6;
+    /* line-height: 1.6; */
   }
   
   /* Cabeçalho */
@@ -24,8 +24,8 @@
   /* Navegação */
   nav {
     /* background-color: #F7931E; */
-    padding: 10px 0;
-    text-align: center;
+    /* padding: 10px 0; */
+    /* text-align: center; */
   }
   
   nav a {

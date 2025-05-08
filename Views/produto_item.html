@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos - Senac Commerce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="../Assets/Css/index.css">
+  <link rel="stylesheet" href="../Assets/Css/produto_item.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Senac<span>Ecommerce</span></div>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+    
+        <div class="area_pesquisa">
+          <input id="barra_pesquisar" type="text">
+          <button id="btn_pesquisar" type="submit">Buscar</button>
+        </div>
+        
+        <nav class="nav-menu" id="navMenu">
+          <a href="../index.html">Home</a>
+          <a href="produtos.html">Produtos</a>
+          <a href="carrinho.html">Carrinho</a>
+          <a href="usuario.html">Usuário</a>
+          <a href="favoritos.html">Favoritos</a>
+          <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="area_produto">
+            <img id="img_prod" src="" alt="">
+            <div class="info_prod">
+                <h3 id="nome_prod">Teste</h3>
+
+                <span id="avaliacao_prod"></span>
+
+                <p id="val_prod"></p>
+
+                <span class="descricao_produto">
+                    Descrição: <br>
+                    <p id="desc_prod"></p>
+                </span>
+
+                <span id="categ_prod">Categorias:</span>
+
+                <div class="area_buttons">
+                    <button id="add_favoritos">❤️ Adicinar Aos Favoritos</button>
+                    <button id="add_carrinho">🛒 Adicinar Ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script defer>
+        const nome_prod = document.getElementById("nome_prod");
+        const img_prod = document.getElementById("img_prod");
+        const val_prod = document.getElementById("val_prod");
+        const desc_prod = document.getElementById("desc_prod");
+        const avaliacao_prod = document.getElementById("avaliacao_prod");
+        const categ_prod = document.getElementById("categ_prod");
+        
+        let parametros = new URLSearchParams(document.location.search);
+        let id_prod = (new URLSearchParams(document.location.search)).get("id_prod");
+
+        
+        fetch(`https://fakestoreapi.com/products/${id_prod}`)
+        .then(
+            dados_json = function(resposta){
+                return resposta.json();
+            }
+        )
+        .then(
+            function(dados_json){
+                console.log(dados_json);
+
+                img_prod.src = dados_json.image;
+                nome_prod.innerText = dados_json.title;
+                avaliacao_prod.innerText = `${dados_json.rating.rate} ⭐ | ${dados_json.rating.count} + Avaliações`;
+                val_prod.innerText = "R$ "+ dados_json.price;
+                desc_prod.innerHTML = dados_json.description;
+                categ_prod.innerText += " "+ dados_json.category;
+                // (dados_json.category).forEach(categoria => {
+                // });
+            }
+        )
+    </script>
+</body>
+</html>
