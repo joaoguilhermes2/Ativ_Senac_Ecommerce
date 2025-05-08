@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Carrinho - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css">
+  <link rel="stylesheet" href="../Assets/Css/carrinho.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -21,111 +22,74 @@
     </nav>
   </header>
 
-  <main>
+  <main class="carrinho-container">
     <h1>Carrinho de Compras</h1>
-  <div id="carrinho-itens"></div>
+    
+    <div id="carrinho-itens" class="itens-container"></div>
+    
+    <div id="resumo-carrinho" class="resumo-pedido">
+      <h3>Resumo do Pedido</h3>
+      <div id="resumo-detalhes"></div>
+      <button id="btn-finalizar" class="btn-primario">Finalizar Compra</button>
+    </div>
 
-  <form class="form-endereco" onsubmit="finalizarCompra(); return false;">
-    <h3>Endereço de Entrega</h3>
+    <div id="formulario-entrega" class="form-endereco">
+      <h3>Endereço de Entrega</h3>
 
-    <label for="cep">CEP:</label>
-    <input type="text" id="cep" onblur="buscarCEP()" required>
+      <div class="form-group">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" placeholder="00000-000" onblur="buscarCEP()" required>
+      </div>
 
-    <label for="logradouro">Logradouro:</label>
-    <input type="text" id="logradouro" required>
+      <div class="form-group">
+        <label for="logradouro">Logradouro:</label>
+        <input type="text" id="logradouro" required>
+      </div>
 
-    <label for="cidade">Cidade:</label>
-    <input type="text" id="cidade" required>
+      <div class="form-group">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" required>
+      </div>
 
-    <label for="estado">Estado:</label>
-    <input type="text" id="estado" required>
+      <div class="form-group">
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento">
+      </div>
 
-    <button type="submit">Finalizar Compra</button>
-  </form>
+      <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" required>
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" required>
+          <option value="">Selecione</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <!-- Todos os estados aqui -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secundario" onclick="voltarParaCarrinho()">Voltar</button>
+        <button type="submit" class="btn-primario" onclick="finalizarCompra()">Confirmar Compra</button>
+      </div>
+    </div>
   </main>
-  <script>
-    // Exemplo de produtos no carrinho (substituir com sessionStorage ou localStorage em projeto real)
-    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [
-      { id: 1, nome: 'Camisa Azul', preco: 79.90, quantidade: 1 },
-      { id: 2, nome: 'Tênis Preto', preco: 199.90, quantidade: 2 }
-    ];
-  
-    function mostrarCarrinho() {
-      const div = document.getElementById('carrinho-itens');
-      if (carrinho.length === 0) {
-        div.innerHTML = '<p>Seu carrinho está vazio.</p>';
-        return;
-      }
-  
-      div.innerHTML = carrinho.map(item => `
-        <div class="card">
-          <h3>${item.nome}</h3>
-          <p>Preço: R$ ${item.preco.toFixed(2)}</p>
-          <label>Quantidade:
-            <input type="number" value="${item.quantidade}" min="1"
-              onchange="atualizarQuantidade(${item.id}, this.value)">
-          </label>
-        </div>
-      `).join('');
-    }
-  
-    function atualizarQuantidade(id, novaQtd) {
-      const produto = carrinho.find(p => p.id === id);
-      if (produto) {
-        produto.quantidade = parseInt(novaQtd);
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      }
-    }
-  
-    function buscarCEP() {
-      const cep = document.getElementById('cep').value.replace(/\D/g, '');
-      if (cep.length !== 8) {
-        alert('CEP inválido!');
-        return;
-      }
-  
-      fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(res => res.json())
-        .then(dados => {
-          if (dados.erro) throw new Error('CEP não encontrado');
-          document.getElementById('logradouro').value = dados.logradouro;
-          document.getElementById('cidade').value = dados.localidade;
-          document.getElementById('estado').value = dados.uf;
-        })
-        .catch(() => alert('Erro ao buscar CEP.'));
-    }
-  
-    function finalizarCompra() {
-      const token = sessionStorage.getItem('token');
-      if (!token) {
-        alert('Você precisa estar logado para finalizar a compra.');
-        window.location.href = 'login.html';
-        return;
-      }
-  
-      const endereco = {
-        cep: document.getElementById('cep').value,
-        logradouro: document.getElementById('logradouro').value,
-        cidade: document.getElementById('cidade').value,
-        estado: document.getElementById('estado').value
-      };
-  
-      // Simulação de envio dos dados
-      console.log('Compra finalizada:', {
-        usuario: token,
-        endereco,
-        carrinho
-      });
-  
-      alert('Compra finalizada com sucesso!');
-      localStorage.removeItem('carrinho');
-      window.location.href = 'index.html';
-    }
-  
-    // Iniciar a exibição do carrinho
-    mostrarCarrinho();
-  </script>
 
-  <script src="js/menu.js"></script>
+  <script src="../Assets/js/carrinho.js"></script>
+
+  <script src="../Assets/js/menu.js"></script>
 </body>
 </html>
