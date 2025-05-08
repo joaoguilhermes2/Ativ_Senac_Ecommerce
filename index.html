@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>Senac Commerce</title>
   <link rel="stylesheet" href="./Assets/Css/index.css">
+  <link rel="stylesheet" href="./Assets/Css/carrosel.css">
+  <link rel="stylesheet" href="Assets/Css/home.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
   <header>
     <div class="logo">Senac<span>Ecommerce</span></div>
     <button class="menu-toggle" id="menuToggle">&#9776;</button>
@@ -23,15 +24,39 @@
       <a href="./Views/carrinho.html">Carrinho</a>
       <a href="./Views/usuario.html">Usuário</a>
       <a href="./Views/favoritos.html">Favoritos</a>
-      <a href="./Views/login2.html">Login</a>
+      <a href="./Views/login.html">Login</a>
     </nav>
   </header>
 
   <main>
-    <h1>Bem-vindo ao Senac ommerce</h1>
-    <p>Seu ecommerce de aprendizado!</p>
+    <h1>Bem-vindo ao Senac Ecommerce</h1>
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="./Assets/Img/senac 1.png" alt="Imagem 1">
+        <img src="./Assets/Img/senac 2.png" alt="Imagem 2">
+        <img src="./Assets/Img/senac 3.png" alt="Imagem 3">
+      </div>
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+    <section class="sobre-empresa">
+      <div class="sobre-texto">
+        <h2>Sobre o Senac Ecommerce</h2>
+        <p>O Senac Ecommerce é uma plataforma inovadora desenvolvida para oferecer produtos de qualidade com tecnologia, educação e facilidade. Nosso compromisso é entregar sempre o melhor em experiência digital para nossos clientes.</p>
+        <p>Desde a fundação, buscamos inovação, responsabilidade social e atendimento humanizado como pilares principais.</p>
+      </div>
+      <div class="sobre-imagens">
+        <img src="Assets/IMG/senac 1.png" alt="Equipe Senac">
+        <img src="Assets/IMG/senac 2.png" alt="Escritório Moderno">
+        <img src="Assets/IMG/senac 3.png" alt="Tecnologia de ponta">
+      </div>
+    </section>
+    <footer class="fim-pagina">
+      
+    </footer>    
   </main>
 
-  <script src="js/menu.js"></script>
+  <!-- <script src="js/menu.js"></script> -->
+  <script src="Assets/Js/carrosel.js"></script>
 </body>
 </html>
