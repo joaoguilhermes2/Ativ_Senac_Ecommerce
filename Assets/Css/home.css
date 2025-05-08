@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+  }  
+
+.sobre-empresa {
+    width: 100vw; /* força a largura igual à da viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    background: #003366;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .sobre-texto {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: slideInTop 1s ease-out;
+  }
+  
+  .sobre-texto h2 {
+    font-size: 2.5rem;
+    color: #FFF;
+    margin-bottom: 20px;
+  }
+  
+  .sobre-texto p {
+    font-size: 1.1rem;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  
+  .sobre-imagens {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: slideInBottom 1s ease-out;
+  }
+  
+  .sobre-imagens img {
+    width: 250px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .sobre-imagens img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Animações */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .sobre-imagens {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .sobre-imagens img {
+      width: 90%;
+      height: auto;
+    }
+  }  
