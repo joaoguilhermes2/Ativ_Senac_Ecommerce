@@ -2,17 +2,17 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrinho - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css">
   <link rel="stylesheet" href="../Assets/Css/carrinho.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
   <header>
     <div class="logo">Senac<span>Ecommerce</span></div>
-    <button class="menu-toggle" id="menuToggle">&#9776;</button>
-    <nav class="nav-menu" id="navMenu">
+    <button id="menuToggle" class="menu-toggle">&#9776;</button>
+    <nav id="navMenu" class="nav-menu">
       <a href="../index.html">Home</a>
       <a href="produtos.html">Produtos</a>
       <a href="carrinho.html">Carrinho</a>
@@ -21,17 +21,15 @@
       <a href="login.html">Login</a>
     </nav>
   </header>
-
+  <h1 class="titulo-finalizacao">Finalizar Compra</h1>
   <main class="carrinho-container">
-    <h1>Carrinho de Compras</h1>
-    
+   
     <div id="carrinho-itens" class="itens-container"></div>
-    
-    <div id="resumo-carrinho" class="resumo-pedido">
+    <section id="resumo-carrinho" class="resumo-pedido">
       <h3>Resumo do Pedido</h3>
       <div id="resumo-detalhes"></div>
       <button id="btn-finalizar" class="btn-primario">Finalizar Compra</button>
-    </div>
+    </section>
 
     <div id="formulario-entrega" class="form-endereco">
       <h3>Endereço de Entrega</h3>
@@ -100,9 +98,13 @@
       </svg>
     </div> 
   </main>
-
+  
   <script src="../Assets/js/carrinho.js"></script>
+  <script>
+    document.getElementById('btn-finalizar').addEventListener('click', function() {
+      window.location.href = 'finalizar.html';
+    });
+  </script>
 
-  <script src="../Assets/js/menu.js"></script>
 </body>
 </html>
