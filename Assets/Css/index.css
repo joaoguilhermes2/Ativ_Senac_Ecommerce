@@ -55,13 +55,14 @@
     border: none;
     cursor: pointer;
   }
+  /* SubMenu Produtos */
   ul{
     list-style-type: none;
   }
   ul ul{
     display: none;
     position: absolute;
-    width: 25%;
+    width: 5%;
     background-color: #003366;
     align-items: flex-start;
     justify-content: center;
@@ -70,7 +71,8 @@
 }
 ul ul li{
     display: flex;
-    height: 30px;
+    height: 50px;
+    padding: 40% 0% 30% 0%;
     align-items: center;
     justify-content: center;
     padding-left: 0;

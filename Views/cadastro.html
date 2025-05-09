@@ -41,6 +41,22 @@
       <button type="button" class="botao-voltar" onclick="window.location.href='../Views/login.html';">Voltar</button>
     </form>
   </div>
+    <div class="wave-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+          <path fill="#FF8C00" fill-opacity="1">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                  values="
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                      M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                      M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                  " />
+          </path>
+      </svg>
+    </div> 
+
+
+
   <script>
     document.querySelector('.area-cad').addEventListener('submit', function(event) {
       event.preventDefault();

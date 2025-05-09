@@ -1,8 +1,15 @@
 .nav-menu{
     background-color: #003366;
 }
+.titulo{
+    width: 50%;
+    height: 60px;
+    /* border: 2px solid green; */
+    margin: 0% 0% 0% 45%;
+    font-size: 30px;
+}
 .espaco{
-    margin: 10% 0% 0% 0%;
+    margin: 5% 0% 0% 0%;
 }
 .group{
     display: flex;
@@ -61,7 +68,6 @@
     height: 100%;
     overflow: hidden;
     z-index: -1;
-    background: #005baa;
 }
 
 .waves {

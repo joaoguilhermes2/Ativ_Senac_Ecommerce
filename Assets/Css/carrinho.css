@@ -94,6 +94,23 @@
     background: var(--light-gray);
     padding: 0.5rem;
   }
+  .wave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   
   .item-info {
     display: flex;
@@ -422,6 +439,27 @@
     background-color: var(--success-color);
     color: var(--white);
   }
+
+
+  /* Parte Laranja Da pagina */
+  .wave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
   
   /* Responsivo Aprimorado */
   @media (max-width: 768px) {
