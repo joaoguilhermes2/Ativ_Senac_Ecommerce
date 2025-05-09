@@ -7,25 +7,25 @@
   
   /* Tipografia */
   body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* font-family: 'Helvetica Neue', Arial, sans-serif; */
     background-color: #F2F2F2;
     color: #003366;
-    line-height: 1.6;
+    /* line-height: 1.6; */
   }
   
   /* Cabeçalho */
   header {
     background-color: #003366;
     color: #FFFFFF;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     text-align: center;
   }
   
   /* Navegação */
   nav {
-    background-color: #F7931E;
-    padding: 10px 0;
-    text-align: center;
+    /* background-color: #F7931E; */
+    /* padding: 10px 0; */
+    /* text-align: center; */
   }
   
   nav a {
