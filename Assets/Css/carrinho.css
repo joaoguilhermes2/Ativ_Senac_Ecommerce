@@ -23,6 +23,10 @@
     --transition-normal: all 0.3s ease;
     --transition-slow: all 0.5s ease;
   }
+  .titulo-finalizacao {
+    text-align: center;
+    padding-top: 20px;
+  }
   
   /* Layout Base Modernizado */
   .carrinho-container {
@@ -185,6 +189,42 @@
     color: var(--error-color);
     transform: scale(1.1);
   }
+
+  .produtos-resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    justify-items: center;
+  }
+  
+  .produto-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    width: 180px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  .produto-card:hover {
+    transform: scale(1.03);
+  }
+  .produto-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+  }
+  .produto-card h4 {
+    margin: 10px 0 5px;
+    font-size: 16px;
+  }
+  .produto-card span {
+    color: green;
+    font-weight: bold;
+  }
   
   /* Resumo do Pedido - Design Aprimorado */
   .resumo-pedido {
@@ -194,10 +234,15 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 100%;
-    /* margin: 2rem auto; */
+    margin: 2rem auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    animation: fadeInForm 0.8s ease-in-out
+    animation: fadeInForm 0.8s ease-in-out;
+  
+    position: sticky;
+    top: 1.5rem; /* distância do topo da tela */
+    z-index: 10;
   }
+  
   
   .resumo-pedido h3 {
     margin-top: 0;
@@ -531,7 +576,7 @@
     }
     
     .resumo-pedido {
-      position: static;
+      position: sticky;
       margin-top: 2rem;
     }
   }
