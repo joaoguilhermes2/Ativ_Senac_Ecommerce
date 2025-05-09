@@ -30,12 +30,18 @@
       <div id="resumo-detalhes"></div>
       <button id="btn-finalizar" class="btn-primario">Finalizar Compra</button>
     </section>
+
+    <!-- <h2 style="text-align: center; margin-top: -10px;">Revise seus produtos</h2> -->
+  <section id="produtos-resumo" class="produtos-resumo"></section>
      
   </main>
-  <h2 style="text-align: center; margin-top: -10px;">Revise seus produtos</h2>
-  <section id="produtos-resumo" class="produtos-resumo"></section>
+  
   <script src="../Assets/js/carrinho.js"></script>
-  <script src="../Assets/js/menu.js"></script>
+  <script>
+    document.getElementById('btn-finalizar').addEventListener('click', function() {
+      window.location.href = 'finalizar.html';
+    });
+  </script>
 
 </body>
 </html>

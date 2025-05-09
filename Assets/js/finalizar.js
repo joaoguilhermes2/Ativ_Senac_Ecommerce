@@ -31,3 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+function finalizarCompra() {
+  // Verificação básica fake de campos preenchidos
+  const cep = document.getElementById('cep').value;
+  const numero = document.getElementById('numero').value;
+  const telefone = document.getElementById('telefone').value;
+
+  if (!cep || !numero || !telefone) {
+    alert("Preencha todos os campos obrigatórios!");
+    return;
+  }
+
+  // Exibir o modal de sucesso
+  document.getElementById('modal-sucesso').classList.remove('hidden');
+
+  // Limpar carrinho depois de alguns segundos (ou ao fechar modal)
+  localStorage.removeItem("carrinho");
+}
+function fecharModal() {
+  document.getElementById('modal-sucesso').classList.add('hidden');
+  window.location.href = "../index.html"; // redirecionar após fechar modal
+}

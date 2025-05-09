@@ -6,6 +6,47 @@
   <title>Finalizar Compra - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css" />
   <link rel="stylesheet" href="../Assets/Css/carrinho.css" />
+  <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,8 +63,21 @@
     </nav>
   </header>
 
+  <h1 class="titulo-finalizacao">Confirmar Compra</h1>
+
   <main class="carrinho-container">
-    <h1>Finalizar Compra</h1>
+
+    <section id="resumo-carrinho" class="resumo-pedido">
+      <h3>Resumo do Pedido</h3>
+      <div id="resumo-detalhes"></div>
+      <div id="frete-info"></div>
+      <div id="total-geral" class="total-geral"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secundario" onclick="voltarParaCarrinho()">Voltar</button>
+        <button type="button" class="btn-primario" onclick="finalizarCompra()">Confirmar Compra</button>
+      </div>
+    </section>
 
     <section id="formulario-entrega" class="form-endereco">
       <h3>Endereço de Entrega</h3>
@@ -64,7 +118,7 @@
           <option value="">Selecione</option>
           <option value="MS">Mato Grosso do Sul</option>
           <option value="SP">São Paulo</option>
-          <!-- etc -->
+          <!-- Adicione mais estados conforme necessário -->
         </select>
       </div>
 
@@ -74,18 +128,15 @@
       </div>
     </section>
 
-    <section id="resumo-carrinho" class="resumo-pedido">
-      <h3>Resumo do Pedido</h3>
-      <div id="resumo-detalhes"></div>
-      <div id="frete-info"></div>
-      <div id="total-geral" class="total-geral"></div>
-
-      <div class="form-actions">
-        <button type="button" class="btn-secundario" onclick="voltarParaCarrinho()">Voltar</button>
-        <button type="button" class="btn-primario" onclick="finalizarCompra()">Confirmar Compra</button>
-      </div>
-    </section>
   </main>
+
+  <div id="modal-sucesso" class="modal hidden">
+    <div class="modal-content">
+      <h2>Compra realizada com sucesso!</h2>
+      <p>Seu pagamento foi processado e os produtos estão a caminho.</p>
+      <button onclick="fecharModal()">OK</button>
+    </div>
+  </div>
 
   <script>
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
@@ -94,25 +145,36 @@
 
     function carregarResumo() {
       const resumo = document.getElementById('resumo-detalhes');
-      resumo.innerHTML = "";
-
+      subtotal = 0;
       if (carrinho.length === 0) {
         resumo.innerHTML = "<p>Carrinho vazio.</p>";
         return;
       }
 
-      carrinho.forEach(produto => {
-        const preco = produto.preco || 0;
-        subtotal += preco * produto.quantidade;
-        resumo.innerHTML += `
-          <div class="item">
-            <span>${produto.nome}</span>
-            <span>Qtd: ${produto.quantidade}</span>
-            <span>R$ ${(preco * produto.quantidade).toFixed(2)}</span>
-          </div>
-        `;
-      });
-
+      resumo.innerHTML = `
+        <table class="resumo-tabela">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${carrinho.map(produto => {
+              const preco = produto.preco || 0;
+              subtotal += preco * produto.quantidade;
+              return `
+                <tr>
+                  <td>${produto.nome}</td>
+                  <td>${produto.quantidade}</td>
+                  <td>R$ ${(preco * produto.quantidade).toFixed(2)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
       atualizarTotal();
     }
 
@@ -151,7 +213,6 @@
     }
 
     function simularFrete(estado, cep) {
-      // Simulação fictícia de frete por UF
       const tabelaFrete = {
         "MS": 15.00,
         "SP": 20.00,
@@ -171,15 +232,21 @@
     }
 
     function finalizarCompra() {
-      alert("Compra finalizada com sucesso!");
+      // Exibe o modal
+      document.getElementById("modal-sucesso").classList.remove("hidden");
+      // Limpa o carrinho
       localStorage.removeItem("carrinho");
+    }
+
+    function fecharModal() {
+      // Fecha o modal e redireciona para home
+      document.getElementById("modal-sucesso").classList.add("hidden");
       window.location.href = "../index.html";
     }
 
     carregarResumo();
   </script>
 
-  <script src="../Assets/js/menu.js"></script>
-
+  <script src="../Assets/js/finalizar.js"></script>
 </body>
 </html>

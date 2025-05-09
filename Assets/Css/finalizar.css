@@ -13,6 +13,11 @@
     line-height: 1.6;
   }
   
+  .titulo-finalizacao {
+    text-align: center;
+    padding-top: 20px;
+  }
+
   header {
     background-color: #003366;
     color: #FFFFFF;

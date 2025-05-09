@@ -4,7 +4,7 @@ class Carrinho {
     this.freteSelecionado = null;
     this.init();
   }
-
+  
   init() {
     this.cacheElements();
     this.setupEventListeners();
@@ -105,22 +105,77 @@ class Carrinho {
 
     this.elements.carrinhoItens.style.display = 'none';
     document.getElementById('resumo-carrinho').style.display = 'none';
+    
 
     this.elements.formularioEntrega.innerHTML = `
       <div class="form-compacto">
-        <h3>Informações de Entrega</h3>
-        <div class="form-group-compact">
-          <label for="cep">CEP</label>
-          <input type="text" id="cep" placeholder="00000-000" required>
-          <button type="button" class="btn-buscar-cep" id="btn-buscar-cep">Buscar</button>
+        <h1 class="titulo-finalizacao">Confirmar Compra</h1>
+    
+        <div class="carrinho-container">
+          
+          <section id="resumo-carrinho" class="resumo-pedido">
+              <h3>Resumo do Pedido</h3>
+              <div id="resumo-detalhes"></div>
+              <div id="frete-info"></div>
+              <div id="total-geral" class="total-geral"></div>
+
+              <div class="form-actions">
+              <button type="button" class="btn-secundario" onclick="voltarParaCarrinho()">Voltar</button>
+              <button type="button" class="btn-primario" onclick="finalizarCompra()">Confirmar Compra</button>
+              </div>
+          </section>
+          <section id="formulario-entrega" class="form-endereco">
+            <h3>Endereço de Entrega</h3>
+
+            <div class="form-group">
+              <label for="cep">CEP:</label>
+              <input type="text" id="cep" placeholder="00000-000" onblur="buscarCEP()" required>
+            </div>
+
+            <div class="form-group">
+              <label for="logradouro">Logradouro:</label>
+              <input type="text" id="logradouro" required>
+            </div>
+
+            <div class="form-group">
+              <label for="numero">Número:</label>
+              <input type="text" id="numero" required>
+            </div>
+
+            <div class="form-group">
+              <label for="complemento">Complemento:</label>
+              <input type="text" id="complemento">
+            </div>
+
+            <div class="form-group">
+              <label for="bairro">Bairro:</label>
+              <input type="text" id="bairro" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cidade">Cidade:</label>
+              <input type="text" id="cidade" required>
+            </div>
+
+            <div class="form-group">
+              <label for="estado">Estado:</label>
+              <select id="estado" required>
+                <option value="">Selecione</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="SP">São Paulo</option>
+                <!-- etc -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="telefone">Telefone:</label>
+              <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+            </div>
+          </section>
+
+          
         </div>
-        <div id="opcoes-frete-container">
-          <div class="carregando-frete"><p>Informe o CEP para calcular o frete</p></div>
-        </div>
-        <div class="form-actions">
-          <a href="produtos.html" class="btn btn-secundario">Voltar</a>
-          <button type="button" class="btn btn-primario" id="btn-finalizar-compra">Finalizar Compra</button>
-        </div>
+
       </div>
     `;
 
@@ -270,4 +325,7 @@ class Carrinho {
 }
 
 // Para instanciar
-const carrinho = new Carrinho();
+document.addEventListener('DOMContentLoaded', () => {
+  const carrinho = new Carrinho();
+});
+
