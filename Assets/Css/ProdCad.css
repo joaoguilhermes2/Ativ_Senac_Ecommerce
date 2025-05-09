@@ -36,7 +36,7 @@
     margin: 0% 0% 0% 15%;
 }
 .area-cad .botao-cadastro {
-    width: 50%;
+    width: 30%;
     padding: 10px;
     background: #005baa;
     color: white;
@@ -45,20 +45,20 @@
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
-    margin: 0% 20% 1% 30%;
+    margin: 0% 20% 1% 40%;
   }
   
   .area-cad .botao-cadastro:hover {
     background: #003f7f;
   }
   .botao-voltar{
-    width: 50%;
+    width: 30%;
     padding: 10px;
     background-color: #F7931E;
     color: white;
     font-weight: bold;
     border-radius: 8px;
-    margin: 0% 20% 0% 30%;
+    margin: 0% 20% 1% 40%;
   }
   .wave-container {
     position: fixed;

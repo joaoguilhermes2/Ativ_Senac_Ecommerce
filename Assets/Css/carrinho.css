@@ -509,7 +509,7 @@
   
   /* Botões Aprimorados */
   .btn {
-    padding: 0.875rem 1.5rem;
+    padding: 0.575rem 1.5rem;
     border-radius: var(--border-radius-md);
     font-weight: 600;
     font-size: 1rem;
@@ -521,9 +521,22 @@
     justify-content: center;
     gap: 0.5rem;
     border: 1px solid transparent;
+    text-decoration: none;
   }
   
   .btn-primario {
+    padding: 0.575rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
     background-color: var(--secondary-color);
     color: var(--white);
     border-color: var(--secondary-color);
@@ -540,13 +553,25 @@
   }
   
   .btn-secundario {
-    background-color: var(--white);
-    color: var(--text-color);
-    border-color: var(--medium-gray);
+    padding: 0.575rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-color: var(--secondary-color);
   }
   
   .btn-secundario:hover {
-    background-color: var(--light-gray);
+    background-color: #dd6b20;
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
   }
