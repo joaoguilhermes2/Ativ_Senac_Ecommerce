@@ -1,0 +1,79 @@
+.nav-menu{
+    background-color: #003366;
+}
+.titulo{
+    width: 50%;
+    height: 60px;
+    /* border: 2px solid green; */
+    margin: 0% 0% 0% 45%;
+    font-size: 30px;
+}
+.espaco{
+    margin: 5% 0% 0% 0%;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+    margin: 0% 20% 0% 30%;
+}
+.group input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    
+}
+
+.area-cad{
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0% 0% 0% 15%;
+}
+.area-cad .botao-cadastro {
+    width: 50%;
+    padding: 10px;
+    background: #005baa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    margin: 0% 20% 1% 30%;
+  }
+  
+  .area-cad .botao-cadastro:hover {
+    background: #003f7f;
+  }
+  .botao-voltar{
+    width: 50%;
+    padding: 10px;
+    background-color: #F7931E;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 0% 20% 0% 30%;
+  }
+  .wave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

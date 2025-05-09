@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro Usuário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../Assets/Css/index.css">
+  <link rel="stylesheet" href="../../../Assets/Css/style.css">
+  <link rel="stylesheet" href="../../../Assets/Css/ProdCad.css">
+
+</head>
+<body>
+  <header>
+    <div class="logo">Senac<span>Ecommerce</span></div>
+    <button class="menu-toggle" id="menuToggle">&#9776;</button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../../index.html">Home</a>
+      <ul>
+        <li><a href="../../../Views/produtos.html">Produtos</a>
+          <ul>
+            <li><a href="../../../Views/Admin/ProdutoCad/CadastroProd.html">Cadastrar Produto</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="../../../Views/carrinho.html">Carrinho</a>
+      <a href="../../../Views/usuario.html">Usuário</a>
+      <a href="../../../Views/favoritos.html">Favoritos</a>
+      <a href="../../../Views/login.html">Login</a>
+    </nav>
+  </header>
+  <p class="titulo">Editar Produto</p>
+    <form class="area-cad" action="" method="post">
+      <div class="group">
+        <label class ="espaco"for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome.">
+      </div>
+      <div class="group">
+        <label for="preco">Preço</label>
+        <input type="text" name="preco" id="preco" placeholder="Digite preço do produto.">
+      </div>
+      <div class="group">
+        <label for="descricaoProd">Descrição</label>
+        <input type="descricaoProd" name="descricaoProd" id="descricaoProd" placeholder="Descrição do produto.">
+      </div>
+      <div class="group">
+        <label for="foto" class="form-label">Foto</label>
+        <input type="file" class="form-control" id="foto" name="foto">
+        
+      </div>
+      <button type="submit" id="btn_cadastrar" class="botao-cadastro">Cadastrar</button>
+
+      <button type="button" class="botao-voltar" onclick="window.location.href='../../index.html';">Voltar</button>
+    </form>
+  </div>
+  <div class="wave-container">
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+        <path fill="#FF8C00" fill-opacity="1">
+            <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                values="
+                    M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                    M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                    M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                    M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                " />
+        </path>
+    </svg>
+  </div> 
+
+  <script>
+    document.querySelector('.area-cad').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const nome = document.getElementById('nome').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const confSenha = document.getElementById('confSenha').value;
+  
+      if (!nome || !tel || !email || !senha || !confSenha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      if (senha !== confSenha) {
+        alert('As senhas não coincidem.');
+        return;
+      }
+  
+      alert('Cadastrado com sucesso!');
+      
+    });
+  </script>  
+</body>
+</html>

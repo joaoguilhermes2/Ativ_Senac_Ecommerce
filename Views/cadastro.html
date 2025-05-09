@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro Usuário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../Assets/Css/index.css">
+  <link rel="stylesheet" href="../../Assets/Css/style.css">
+  <link rel="stylesheet" href="../../Assets/Css/login.css">
+  <link rel="stylesheet" href="../../Assets/Css/cadastro.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo-box">
+      <img src="../../Assets/IMG/logo_senac.png" alt="Logo Senac" class="logo">
+      <h2 class="subtitle">Ecommerce</h2>
+    </div>
+    <form class="area-cad" action="" method="post">
+      <div class="group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome.">
+      </div>
+      <div class="group">
+        <label for="tel">Telefone</label>
+        <input type="text" name="tel" id="tel" placeholder="Digite seu telefone.">
+      </div>
+      <div class="group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Digite seu email.">
+      </div>
+      <div class="group">
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" placeholder="Digite sua senha.">
+      </div>
+      <div class="group">
+        <label for="confSenha">Confirmar Senha</label>
+        <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha.">
+      </div>
+      <button type="submit" id="btn_cadastrar" class="botao-cadastro">Cadastrar</button>
+
+      <button type="button" class="botao-voltar" onclick="window.location.href='../Views/login.html';">Voltar</button>
+    </form>
+  </div>
+    <div class="wave-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+          <path fill="#FF8C00" fill-opacity="1">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                  values="
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                      M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                      M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                  " />
+          </path>
+      </svg>
+    </div> 
+
+
+
+  <script>
+    document.querySelector('.area-cad').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const nome = document.getElementById('nome').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const confSenha = document.getElementById('confSenha').value;
+  
+      if (!nome || !tel || !email || !senha || !confSenha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      if (senha !== confSenha) {
+        alert('As senhas não coincidem.');
+        return;
+      }
+  
+      alert('Cadastrado com sucesso!');
+      
+    });
+  </script>  
+</body>
+</html>

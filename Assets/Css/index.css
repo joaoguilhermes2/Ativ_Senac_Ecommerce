@@ -55,7 +55,32 @@
     border: none;
     cursor: pointer;
   }
-  
+  /* SubMenu Produtos */
+  ul{
+    list-style-type: none;
+  }
+  ul ul{
+    display: none;
+    position: absolute;
+    width: 5%;
+    background-color: #003366;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 0;
+}
+ul ul li{
+    display: flex;
+    height: 50px;
+    padding: 40% 0% 30% 0%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+}
+ul li:hover ul{
+    display: block;
+}
+
   /* Estilos responsivos */
   @media (max-width: 768px) {
     .menu-toggle {
@@ -89,5 +114,28 @@
   main {
     padding: 20px;
     text-align: center;
+  }
+
+  .user-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .user-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .user-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
   }
   

@@ -2,16 +2,17 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrinho - Senac Commerce</title>
   <link rel="stylesheet" href="../Assets/Css/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Assets/Css/carrinho.css">
 </head>
 <body>
 
   <header>
     <div class="logo">Senac<span>Ecommerce</span></div>
-    <button class="menu-toggle" id="menuToggle">&#9776;</button>
-    <nav class="nav-menu" id="navMenu">
+    <button id="menuToggle" class="menu-toggle">&#9776;</button>
+    <nav id="navMenu" class="nav-menu">
       <a href="../index.html">Home</a>
       <a href="produtos.html">Produtos</a>
       <a href="carrinho.html">Carrinho</a>
@@ -20,13 +21,38 @@
       <a href="login.html">Login</a>
     </nav>
   </header>
+  <h1 class="titulo-finalizacao">Finalizar Compra</h1>
+  <main class="carrinho-container">
+   
+    <div id="carrinho-itens" class="itens-container"></div>
+    <section id="resumo-carrinho" class="resumo-pedido">
+      <h3>Resumo do Pedido</h3>
+      <div id="resumo-detalhes"></div>
+      <button id="btn-finalizar" class="btn-primario">Finalizar Compra</button>
+    </section>
 
-  <main>
-    <h1>Carrinho de Compras</h1>
-    <p>Itens no seu carrinho:</p>
-    <!-- Carrinho de compras com itens listados -->
+    
+    <div class="wave-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 1340 320">
+          <path fill="#FF8C00" fill-opacity="1">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                  values="
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z;
+                      M0,120 C480,160 960,240 1440,120 L1440,320 L0,320 Z;
+                      M0,160 C360,80 1080,240 1440,160 L1440,320 L0,320 Z;
+                      M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z
+                  " />
+          </path>
+      </svg>
+    </div> 
   </main>
+  
+  <script src="../Assets/js/carrinho.js"></script>
+  <script>
+    document.getElementById('btn-finalizar').addEventListener('click', function() {
+      window.location.href = 'finalizar.html';
+    });
+  </script>
 
-  <script src="js/menu.js"></script>
 </body>
 </html>

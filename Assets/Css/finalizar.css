@@ -1,0 +1,107 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Tipografia */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #F2F2F2;
+    color: #003366;
+    line-height: 1.6;
+  }
+  
+  .titulo-finalizacao {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  header {
+    background-color: #003366;
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  nav {
+    background-color: #F7931E;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav a {
+    color: #FFFFFF;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  main.content {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .box {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #F7931E;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #e67e22;
+  }
+  
+  footer {
+    background-color: #003366;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  .pagamento-opcoes {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  #freteResultado {
+    margin-top: 10px;
+    color: #003366;
+    font-weight: bold;
+  }
+  
