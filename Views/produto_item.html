@@ -2,91 +2,132 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Produtos - Senac Commerce</title>
+  <title>Produto - Senac Ecommerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="stylesheet" href="../Assets/Css/index.css">
   <link rel="stylesheet" href="../Assets/Css/produto_item.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Senac<span>Ecommerce</span></div>
-        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+
+  <header>
+    <div class="logo">Senac<span>Ecommerce</span></div>
+    <button class="menu-toggle" id="menuToggle">&#9776;</button>
+
+    <div class="area_pesquisa">
+      <input id="barra_pesquisar" type="text">
+      <button id="btn_pesquisar" type="submit">Buscar</button>
+    </div>
     
-        <div class="area_pesquisa">
-          <input id="barra_pesquisar" type="text">
-          <button id="btn_pesquisar" type="submit">Buscar</button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="../index.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="carrinho.html">Carrinho</a>
+      <a href="usuario.html">Usuário</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="area_produto">
+      <img class="img_prod" id="img_prod" src="" alt="Imagem do produto" style="width: 150px; height: auto;">
+      <div class="info_prod">
+        <h3 id="nome_prod">Carregando...</h3>
+        <span id="avaliacao_prod"></span>
+        <p id="val_prod"></p>
+
+        <div class="area_buttons">
+          <button id="add_favoritos">❤️ Adicionar aos Favoritos</button>
+          <button id="add_carrinho">🛒 Adicionar ao Carrinho</button>
         </div>
-        
-        <nav class="nav-menu" id="navMenu">
-          <a href="../index.html">Home</a>
-          <a href="produtos.html">Produtos</a>
-          <a href="carrinho.html">Carrinho</a>
-          <a href="usuario.html">Usuário</a>
-          <a href="favoritos.html">Favoritos</a>
-          <a href="login.html">Login</a>
-        </nav>
-    </header>
 
-    <main>
-        <section class="area_produto">
-            <img id="img_prod" src="" alt="">
-            <div class="info_prod">
-                <h3 id="nome_prod">Teste</h3>
+        <span class="descricao_produto">
+          Descrição: <br>
+          <p id="desc_prod"></p>
+        </span>
 
-                <span id="avaliacao_prod"></span>
+        <span id="categ_prod">Categoria:</span>
+      </div>
+    </section>
+  </main>
 
-                <p id="val_prod"></p>
+  <!-- Modal de confirmação -->
+    <div id="modal_confirmacao" class="modal">
+        <div class="modal_conteudo">
+        <p>Produto adicionado ao carrinho com sucesso!</p>
+        <button id="fechar_modal">Fechar</button>
+        </div>
+    </div>
+  
 
-                <div class="area_buttons">
-                    <button id="add_favoritos">❤️ Adicinar Aos Favoritos</button>
-                    <button id="add_carrinho">🛒 Adicinar Ao Carrinho</button>
-                </div>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Pega o ID do produto da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const idProduto = urlParams.get('id_prod');
 
-                <span class="descricao_produto">
-                    Descrição: <br>
-                    <p id="desc_prod"></p>
-                </span>
+      // Função para carregar o produto pela API
+      const carregarProduto = async () => {
+        try {
+          const resposta = await fetch(`https://fakestoreapi.com/products/${idProduto}`);
+          const produto = await resposta.json();
 
-                <span id="categ_prod">Categorias:</span>
-                
-            </div>
-        </section>
-    </main>
+          // Preenche os dados do produto na página
+          document.getElementById('nome_prod').textContent = produto.title;
+          document.getElementById('val_prod').textContent = `R$ ${produto.price}`;
+          document.getElementById('desc_prod').textContent = produto.description;
+          document.getElementById('categ_prod').textContent = produto.category;
+          document.getElementById('img_prod').src = produto.image;
+          document.getElementById('avaliacao_prod').textContent = `${produto.rating.rate} ⭐ (${produto.rating.count} Avaliações)`;
+
+          // Ações para adicionar ao carrinho e favoritos
+          const addCarrinhoBtn = document.getElementById('add_carrinho');
+          addCarrinhoBtn.addEventListener('click', () => {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho.push({
+                id: produto.id,
+                nome: produto.title,
+                preco: produto.price,
+                imagem: produto.image,
+                quantidade: 1
+            });
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+            // Exibe o modal
+            const modal = document.getElementById('modal_confirmacao');
+            modal.style.display = 'block';
+
+            // Fecha o modal ao clicar no botão
+            document.getElementById('fechar_modal').onclick = () => {
+                modal.style.display = 'none';
+                window.location.href = "produtos.html"; // redireciona para a página de produtos
+            };
+
+            // Fecha ao clicar fora do modal
+            window.onclick = (event) => {
+                if (event.target === modal) {
+                modal.style.display = 'none';
+                }
+            };
+            });
 
 
-    <script defer>
-        const nome_prod = document.getElementById("nome_prod");
-        const img_prod = document.getElementById("img_prod");
-        const val_prod = document.getElementById("val_prod");
-        const desc_prod = document.getElementById("desc_prod");
-        const avaliacao_prod = document.getElementById("avaliacao_prod");
-        const categ_prod = document.getElementById("categ_prod");
-        
-        let parametros = new URLSearchParams(document.location.search);
-        let id_prod = (new URLSearchParams(document.location.search)).get("id_prod");
+          const addFavoritosBtn = document.getElementById('add_favoritos');
+          addFavoritosBtn.addEventListener('click', () => {
+            alert(`${produto.title} foi adicionado aos favoritos!`);
+            // Você pode também adicionar ao localStorage ou outro método de persistência.
+          });
 
-        
-        fetch(`https://fakestoreapi.com/products/${id_prod}`)
-        .then(
-            dados_json = function(resposta){
-                return resposta.json();
-            }
-        )
-        .then(
-            function(dados_json){
-                console.log(dados_json);
+        } catch (error) {
+          console.error('Erro ao carregar o produto:', error);
+          alert('Erro ao carregar o produto.');
+        }
+      }
 
-                img_prod.src = dados_json.image;
-                nome_prod.innerText = dados_json.title;
-                avaliacao_prod.innerText = `${dados_json.rating.rate} ⭐ | ${dados_json.rating.count} + Avaliações`;
-                val_prod.innerText = "R$ "+ dados_json.price;
-                desc_prod.innerHTML = dados_json.description;
-                categ_prod.innerText += " "+ dados_json.category;
-                // (dados_json.category).forEach(categoria => {
-                // });
-            }
-        )
-    </script>
+      // Carrega o produto ao carregar a página
+      carregarProduto();
+    });
+  </script>
 </body>
 </html>

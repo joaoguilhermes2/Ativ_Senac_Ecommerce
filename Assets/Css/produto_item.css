@@ -1,65 +1,114 @@
-@import url("./style.css");
-@import url("./barra_pesquisa.css");
-
-.area_produto{
-    width: 100%;
-    height: auto;
+/* Centraliza o conteúdo da tag main */
+main {
     display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-    gap: 5%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-
-    /* border: 1px dotted red; */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Garante que ocupe 100% da altura da tela */
 }
 
-#img_prod{
-    float: inline-start;
-    width: 30%;
-    border-radius: 5px;
-}
-
-.info_prod{
-    width: 65%;
+/* Container com as informações do produto */
+.info_prod {
+    width: 100%; /* Ajusta para 100% da largura do container */
+    max-width: 600px; /* Limita a largura máxima */
     display: flex;
     flex-direction: column;
-    gap: 30px;
-
-    align-items: start;
-    justify-content: space-between;
-    
-    #nome_prod{
-        font-size: 1.5em;
-        text-align: start;
-    }
-    
-    #val_prod{
-        font-size: 1.2em;
-        font-weight: bold;
-    }
-
-    .descricao_produto{
-        text-align: start;
-        gap: 2px;
-    }
-
-    #desc_prod{
-        padding: 10px;
-        text-align: justify;
-    }
-
-    .area_buttons{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-
-        /* margin-top: 20%; */
-        justify-content: end;
-        align-self: flex-end;
-        /* border: 1px solid red; */
-    }
+    gap: 20px; /* Reduz o espaçamento entre os elementos */
+    align-items: center; /* Centraliza os itens na horizontal */
+    justify-content: flex-start; /* Organiza os elementos no topo */
+    padding: 20px; /* Adiciona espaçamento interno */
+    box-sizing: border-box; /* Para não afetar o layout */
 }
+
+/* Nome do produto */
+#nome_prod {
+    font-size: 1.5em;
+    text-align: center; /* Centraliza o nome do produto */
+    color: var(--primary-color);
+    width: 100%; /* Faz com que ocupe toda a largura disponível */
+    overflow: hidden; /* Impede que o texto ultrapasse o limite */
+    text-overflow: ellipsis; /* Adiciona "..." no caso de texto longo */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+}
+
+/* Valor do produto */
+#val_prod {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-align: center; /* Centraliza o preço */
+}
+
+/* Descrição do produto */
+.descricao_produto {
+    text-align: center; /* Centraliza a descrição */
+    gap: 2px;
+    width: 100%;
+}
+
+/* Descrição detalhada do produto */
+#desc_prod {
+    padding: 10px;
+    text-align: justify; /* Ajusta o texto de forma justificada */
+    color: var(--text-color);
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+}
+
+/* Botões na área de ações */
+.area_buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center; /* Centraliza os botões */
+    align-self: center; /* Centraliza os botões dentro do container */
+}
+
+/* Ajuste nos botões */
+button {
+    padding: 10px 20px;
+    background-color: rgb(110, 224, 10);
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff5f00;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal_conteudo {
+    background-color: white;
+    color: black;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+  }
+
+  .modal_conteudo button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff7b00;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
