@@ -1,85 +1,83 @@
-/* Centraliza o conteúdo da tag main */
 main {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Garante que ocupe 100% da altura da tela */
-}
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-/* Container com as informações do produto */
-.info_prod {
-    width: 100%; /* Ajusta para 100% da largura do container */
-    max-width: 600px; /* Limita a largura máxima */
+  .info_prod {
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Reduz o espaçamento entre os elementos */
-    align-items: center; /* Centraliza os itens na horizontal */
-    justify-content: flex-start; /* Organiza os elementos no topo */
-    padding: 20px; /* Adiciona espaçamento interno */
-    box-sizing: border-box; /* Para não afetar o layout */
-}
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-/* Nome do produto */
-#nome_prod {
+  .img_prod {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+
+  #nome_prod {
     font-size: 1.5em;
-    text-align: center; /* Centraliza o nome do produto */
+    text-align: center;
     color: var(--primary-color);
-    width: 100%; /* Faz com que ocupe toda a largura disponível */
-    overflow: hidden; /* Impede que o texto ultrapasse o limite */
-    text-overflow: ellipsis; /* Adiciona "..." no caso de texto longo */
-    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
-}
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-/* Valor do produto */
-#val_prod {
+  #val_prod {
     font-size: 1.2em;
     font-weight: bold;
     color: var(--secondary-color);
-    text-align: center; /* Centraliza o preço */
-}
+    text-align: center;
+  }
 
-/* Descrição do produto */
-.descricao_produto {
-    text-align: center; /* Centraliza a descrição */
-    gap: 2px;
+  .descricao_produto {
+    text-align: center;
     width: 100%;
-}
+  }
 
-/* Descrição detalhada do produto */
-#desc_prod {
+  #desc_prod {
     padding: 10px;
-    text-align: justify; /* Ajusta o texto de forma justificada */
+    text-align: justify;
     color: var(--text-color);
-    width: 100%; /* Garante que ocupe toda a largura disponível */
-}
+    width: 100%;
+  }
 
-/* Botões na área de ações */
-.area_buttons {
+  .area_buttons {
     width: 100%;
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center; /* Centraliza os botões */
-    align-self: center; /* Centraliza os botões dentro do container */
-}
+    justify-content: center;
+  }
 
-/* Ajuste nos botões */
-button {
+  button {
     padding: 10px 20px;
-    background-color: rgb(110, 224, 10);
+    background-color: rgb(240, 130, 46);
     border: none;
     color: rgb(255, 255, 255);
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: #ff5f00;
-}
+  }
 
-.modal {
+  .modal {
     display: none;
     position: fixed;
     z-index: 1000;
