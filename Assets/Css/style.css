@@ -7,6 +7,7 @@
   
   /* Tipografia */
   body {
+    min-height: 100vh;
     /* font-family: 'Helvetica Neue', Arial, sans-serif; */
     background-color: #F2F2F2;
     color: #003366;
@@ -42,6 +43,7 @@
   /* Conteúdo principal */
   main {
     padding: 20px;
+    margin-bottom: auto;
   }
   
   /* Rodapé */
@@ -50,9 +52,12 @@
     color: #FFFFFF;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
+
+    margin: auto 0;
+    float: bottom;
   }
   
   /* Botões */
