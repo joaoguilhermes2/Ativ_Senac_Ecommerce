@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="stylesheet" href="../Assets/Css/index.css">
+  <link rel="stylesheet" href="../Assets/Css/home.css">
   <link rel="stylesheet" href="../Assets/Css/produto_item.css">
 
-  
+  <script src="../Assets/js/produto_item.js" defer></script>  
 </head>
 <body>
 
@@ -62,54 +63,23 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const idProduto = urlParams.get('id_prod');
 
-      const carregarProduto = async () => {
-        try {
-          const resposta = await fetch(`https://fakestoreapi.com/products/${idProduto}`);
-          const produto = await resposta.json();
-
-          document.getElementById('nome_prod').textContent = produto.title;
-          document.getElementById('val_prod').textContent = `R$ ${produto.price}`;
-          document.getElementById('desc_prod').textContent = produto.description;
-          document.getElementById('categ_prod').textContent = `Categoria: ${produto.category}`;
-          document.getElementById('img_prod').src = produto.image;
-          document.getElementById('avaliacao_prod').textContent = `${produto.rating.rate} ⭐ (${produto.rating.count} Avaliações)`;
-
-          document.getElementById('add_carrinho').addEventListener('click', () => {
-            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            carrinho.push({
-              id: produto.id,
-              nome: produto.title,
-              preco: produto.price,
-              imagem: produto.image,
-              quantidade: 1
-            });
-            localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-            // Mostra modal
-            document.getElementById('modal').style.display = 'block';
-          });
-
-          document.getElementById('add_favoritos').addEventListener('click', () => {
-            alert(`${produto.title} foi adicionado aos favoritos!`);
-          });
-
-          document.getElementById('fechar_modal').addEventListener('click', () => {
-            window.location.href = 'produtos.html';
-          });
-
-        } catch (error) {
-          console.error('Erro ao carregar o produto:', error);
-          alert('Erro ao carregar o produto.');
-        }
-      }
-
-      carregarProduto();
-    });
-  </script>
+  <footer class="fim-pagina">
+    <div class="footer-content">
+      <!-- Créditos de Desenvolvimento -->
+      <p>Desenvolvido pelos dev's brabos:</p>
+      <p>João Guilherme, Suelen, Eliandro, Gabriel Alvin, Lucas Sesper</p>
+      
+      <!-- Links das Redes Sociais com Letras -->
+      <div class="social-media">
+        <a href="https://www.facebook.com" target="_blank" class="social-link facebook">Facebook</a>
+        <a href="https://www.instagram.com" target="_blank" class="social-link instagram">Instagram</a>
+        <a href="https://www.twitter.com" target="_blank" class="social-link twitter">Twitter</a>
+      </div>
+      
+      <!-- Direitos Autorais -->
+      <p>&copy; 2025 Senac Ecommerce | Todos os direitos reservados</p>
+    </div>
+  </footer> 
 </body>
 </html>

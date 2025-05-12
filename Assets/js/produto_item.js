@@ -85,3 +85,50 @@ atualizarTextoBotaoFavorito();
 add_favoritos.addEventListener("click", ()=>{
     toggleFavorito();
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idProduto = urlParams.get('id_prod');
+
+    const carregarProduto = async () => {
+      try {
+        const resposta = await fetch(`https://fakestoreapi.com/products/${idProduto}`);
+        const produto = await resposta.json();
+        document.getElementById('nome_prod').textContent = produto.title;
+        document.getElementById('val_prod').textContent = `R$ ${produto.price}`;
+        document.getElementById('desc_prod').textContent = produto.description;
+        document.getElementById('categ_prod').textContent = `Categoria: ${produto.category}`;
+        document.getElementById('img_prod').src = produto.image;
+        document.getElementById('avaliacao_prod').textContent = `${produto.rating.rate} ⭐ (${produto.rating.count} Avaliações)`;
+
+        document.getElementById('add_carrinho').addEventListener('click', () => {
+          let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+          carrinho.push({
+            id: produto.id,
+            nome: produto.title,
+            preco: produto.price,
+            imagem: produto.image,
+            quantidade: 1
+          });
+          localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+          // Mostra modal
+          document.getElementById('modal').style.display = 'block';
+        });
+
+        document.getElementById('add_favoritos').addEventListener('click', () => {
+          alert(`${produto.title} foi adicionado aos favoritos!`);
+        });
+
+        document.getElementById('fechar_modal').addEventListener('click', () => {
+          window.location.href = 'produtos.html';
+        });
+
+      } catch (error) {
+        console.error('Erro ao carregar o produto:', error);
+        alert('Erro ao carregar o produto.');
+      }
+    }
+
+    carregarProduto();
+  });

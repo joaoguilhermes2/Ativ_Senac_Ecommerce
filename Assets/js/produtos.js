@@ -39,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(`${produto.nome} foi adicionado aos favoritos!`);
   });
 });
+

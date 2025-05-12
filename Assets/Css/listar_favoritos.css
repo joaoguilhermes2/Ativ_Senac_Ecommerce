@@ -1,4 +1,8 @@
+@import url(style.css);
+
 #area_favoritos {
+  margin-top: 15px;
+  height: auto;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -21,7 +25,7 @@
   padding: 20px;
   border-radius: 5px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10px;
 
   background-color: white;
@@ -38,8 +42,8 @@
 
 /* Imagem do produto */
 .card_prod img {
-  width: 100%;
-  height: 220px;
+  /* width: 100%; */
+  height: 40%;
   object-fit: contain;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -47,8 +51,10 @@
 
 /* Informações do produto */
 .info_prod {
-  padding: 15px;
-  text-align: center;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #nome_prod {
@@ -59,7 +65,7 @@
 
 #val_prod {
   font-size: 1.1rem;
-  color: #27ae60;
+  color: #003366;
   font-weight: bold;
   margin-bottom: 10px;
 }

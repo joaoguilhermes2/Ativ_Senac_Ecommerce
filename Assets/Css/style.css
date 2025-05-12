@@ -7,6 +7,7 @@
   
   /* Tipografia */
   body {
+    height: 100%;
     /* font-family: 'Helvetica Neue', Arial, sans-serif; */
     background-color: #F2F2F2;
     color: #003366;
@@ -15,6 +16,9 @@
   
   /* Cabeçalho */
   header {
+    z-index: 5;
+    position: sticky !important;
+    top: 0;
     background-color: #003366;
     color: #FFFFFF;
     /* padding: 20px 0; */
@@ -41,18 +45,23 @@
   
   /* Conteúdo principal */
   main {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: end; */
     padding: 20px;
   }
   
   /* Rodapé */
   footer {
+    flex-shrink: 0;
     background-color: #003366;
     color: #FFFFFF;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
+    margin-top: auto;
   }
   
   /* Botões */

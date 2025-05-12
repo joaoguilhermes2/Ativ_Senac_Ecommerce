@@ -1,68 +1,78 @@
 @import url("./style.css");
 @import url("./barra_pesquisa.css");
 
-
-.area_produtos{
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    padding: 30px 5%;
+.area_produtos {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 30px 5%;
 }
 
-#area_cards{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: calc(+30px);
-    align-items: start;
-    justify-content: center;
+#area_cards {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(+30px);
+  align-items: start;
+  justify-content: center;
 }
 
-.card_prod{
-    float: left;
-    /* margin-right: auto; */
+.card_prod {
+  float: left;
+  /* margin-right: auto; */
 
-    width: 250px;
-    height: calc(400px);
-    display: flex;
-    flex-direction: column;
-    
-    padding: 20px;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    
-    background-color: white;
-    color: #003366;
-    text-decoration: none;
-    text-decoration-style: none;
+  width: 250px;
+  height: calc(400px);
+  display: flex;
+  flex-direction: column;
 
-    overflow: hidden;
+  padding: 20px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  background-color: white;
+  color: #003366;
+  text-decoration: none;
+  text-decoration-style: none;
+
+  overflow: hidden;
 }
 
-#img_prod{
-    display: flex;   
-    flex-wrap: wrap;
-    height: 40%;
+.card_prod:hover {
+  transform: scale(1.03);
 }
 
-.info_prod{
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+#img_prod {
+  height: 40%;
+  object-fit: contain;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-#nome_prod{
-    font-size: 1.05rem;
-    max-height: 5em;
-    white-space: wrap; 
-    overflow: hidden;
+.info_prod {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#val_prod{
-    font-size: 1.01em;
-    font-weight: bold;
+#nome_prod {
+  font-size: 1.05rem;
+  max-height: 5em;
+  white-space: wrap;
+  overflow: hidden;
+}
+
+#val_prod {
+  font-size: 1.01em;
+  font-weight: bold;
+}
+
+#avaliacao_prod {
+  font-size: 0.9rem;
+  color: #999;
 }

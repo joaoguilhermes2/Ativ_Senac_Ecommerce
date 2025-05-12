@@ -1,57 +1,58 @@
+@import url(./barra_pesquisa.css);
+
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  min-height: 70vh;
+}
 
-  .info_prod {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+.area_produto {
+  width: 95%;
+  min-height: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  gap: 5%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
 
-  .img_prod {
-    width: 150px;
-    height: auto;
-    border-radius: 8px;
-    object-fit: contain;
-    margin-bottom: 20px;
-  }
+  justify-self: flex-start;
+
+  /* border: 1px dotted red; */
+}
+
+.info_prod {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  align-items: start;
+  justify-content: space-between;
 
   #nome_prod {
     font-size: 1.5em;
-    text-align: center;
-    color: var(--primary-color);
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-align: start;
   }
 
   #val_prod {
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--secondary-color);
-    text-align: center;
   }
 
   .descricao_produto {
-    text-align: center;
-    width: 100%;
+    text-align: start;
+    gap: 2px;
   }
 
   #desc_prod {
     padding: 10px;
     text-align: justify;
-    color: var(--text-color);
-    width: 100%;
   }
 
   .area_buttons {
@@ -59,9 +60,13 @@ main {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center;
-  }
 
+    /* margin-top: 20%; */
+    justify-content: end;
+    align-self: flex-end;
+    /* border: 1px solid red; */
+  }
+  
   button {
     padding: 10px 20px;
     background-color: rgb(240, 130, 46);
@@ -72,41 +77,42 @@ main {
     border-radius: 5px;
     transition: background-color 0.3s;
   }
-
+  
   button:hover {
     background-color: #ff5f00;
   }
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-  .modal_conteudo {
-    background-color: white;
-    color: black;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 0 10px #000;
-  }
+.modal_conteudo {
+  background-color: white;
+  color: black;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+}
 
-  .modal_conteudo button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #ff7b00;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.modal_conteudo button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ff7b00;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
